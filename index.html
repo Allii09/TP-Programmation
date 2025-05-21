@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VitaCor - Votre Pharmacie en Ligne</title>
+    <style>
+        /* Réinitialisation et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #0078bf;
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #005d99;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 120, 191, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: #0078bf;
+            border: 2px solid #0078bf;
+        }
+
+        .btn-secondary:hover {
+            background-color: #f0f8ff;
+            transform: translateY(-2px);
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: #0078bf;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #0078bf;
+        }
+
+        .logo-text span {
+            color: #4caf50;
+        }
+
+        
+
+       
+
+        .header-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-buttons .btn {
+            margin-left: 15px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b3e5fc 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #005d99;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #444;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #f9f9f9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background-color: #e3f2fd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0078bf;
+            font-size: 2rem;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #0078bf;
+        }
+
+        .service-description {
+            color: #666;
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            font-size: 0.8rem;
+            color: #0078bf;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: #0078bf;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        .product-rating {
+            color: #ffc107;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #e3f2fd;
+        }
+
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            overflow: hidden;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info h4 {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .testimonial-info p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Delivery Section */
+        .delivery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .delivery-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .delivery-icon {
+            font-size: 2.5rem;
+            color: #0078bf;
+            margin-bottom: 20px;
+        }
+
+        .delivery-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #0078bf 0%, #005d99 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+
+        .cta .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #4caf50;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #ddd;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: #0078bf;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+
+            nav {
+                margin: 20px 0;
+            }
+
+            .header-buttons {
+                margin-top: 15px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .header-buttons {
+                flex-direction: column;
+            }
+
+            .header-buttons .btn {
+                margin: 10px 0;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .cta .btn {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-text">Vita<span>Cor</span></div>
+            </div>
+            <div class="header-buttons">
+                <a href="login.html" class="btn btn-secondary">Se connecter</a>
+                <a href="register.html" class="btn btn-primary">S'inscrire</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Votre santé, notre priorité</h1>
+                <p class="hero-subtitle">VitaCor vous propose une large gamme de médicaments et de produits pharmaceutiques de qualité, livrés directement chez vous.</p>
+                <a href="login.html" class="btn btn-primary">Découvrir nos produits</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Pharmacie VitaCor">
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <p class="section-subtitle">VitaCor vous offre des services pharmaceutiques complets pour répondre à tous vos besoins de santé.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🚚</div>
+                    <h3 class="service-title">Livraison Rapide</h3>
+                    <p class="service-description">Recevez vos médicaments en 24h à 48h partout en France métropolitaine.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">👨‍⚕️</div>
+                    <h3 class="service-title">Conseil Pharmaceutique</h3>
+                    <p class="service-description">Nos pharmaciens sont disponibles pour répondre à toutes vos questions.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔒</div>
+                    <h3 class="service-title">Sécurité Garantie</h3>
+                    <p class="service-description">Tous nos produits sont authentiques et proviennent de sources fiables.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">💳</div>
+                    <h3 class="service-title">Paiement Sécurisé</h3>
+                    <p class="service-description">Plusieurs options de paiement sécurisées pour votre tranquillité d'esprit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section products" id="produits">
+        <div class="container">
+            <h2 class="section-title">Nos Produits Populaires</h2>
+            <p class="section-subtitle">Découvrez notre sélection de produits pharmaceutiques les plus demandés.</p>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Vitamines">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Compléments alimentaires</p>
+                        <h3 class="product-title">Complexe Multivitamines</h3>
+                        <p class="product-price">190MAD</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Médicament">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Médicaments</p>
+                        <h3 class="product-title">Analgésique VitaRelief</h3>
+                        <p class="product-price">120MAD</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1559136560-16ad036d85d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Crème">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">Soins de la peau</p>
+                        <h3 class="product-title">Crème Hydratante Intensive</h3>
+                        <p class="product-price">240MAD</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="login.html" class="btn btn-secondary">Voir tous les produits</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <h2 class="section-title">Ce que disent nos clients</h2>
+            <p class="section-subtitle">Découvrez les témoignages de nos clients satisfaits.</p>
+            
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <p class="testimonial-text">"J'utilise VitaCor depuis plus d'un an maintenant et je suis très satisfaite du service. La livraison est toujours rapide et les produits sont de qualité. Je recommande vivement !"</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Rim khalid">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Rim khalid</h4>
+                            <p>Cliente fidèle</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <p class="testimonial-text">"Le service client de VitaCor est exceptionnel. J'ai eu un problème avec ma commande et ils ont résolu le problème immédiatement. Je n'hésiterai pas à commander à nouveau."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Karim rahib">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Karim rahib</h4>
+                            <p>Client depuis 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Section -->
+    <section class="section delivery">
+        <div class="container">
+            <h2 class="section-title">Livraison et Sécurité</h2>
+            <p class="section-subtitle">Nous nous engageons à vous offrir un service de qualité et sécurisé.</p>
+            
+            <div class="delivery-grid">
+                <div class="delivery-card">
+                    <div class="delivery-icon">🚚</div>
+                    <h3 class="delivery-title">Livraison Rapide</h3>
+                    <p>Livraison en 24h à 48h partout en France métropolitaine. Suivi de commande en temps réel.</p>
+                </div>
+                
+                <div class="delivery-card">
+                    <div class="delivery-icon">🔒</div>
+                    <h3 class="delivery-title">Paiement Sécurisé</h3>
+                    <p>Toutes vos transactions sont protégées par un cryptage SSL avancé pour garantir votre sécurité.</p>
+                </div>
+                
+                <div class="delivery-card">
+                    <div class="delivery-icon">✅</div>
+                    <h3 class="delivery-title">Produits Authentiques</h3>
+                    <p>Tous nos produits sont authentiques et proviennent de sources fiables et vérifiées.</p>
+                </div>
+                
+                <div class="delivery-card">
+                    <div class="delivery-icon">↩️</div>
+                    <h3 class="delivery-title">Retours Faciles</h3>
+                    <p>Politique de retour simple et sans tracas sous 14 jours pour votre tranquillité d'esprit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title">Prêt à prendre soin de votre santé ?</h2>
+            <p class="cta-subtitle">Rejoignez des milliers de clients satisfaits et commandez vos médicaments en toute simplicité.</p>
+            <div>
+                <a href="login.html" class="btn btn-primary">Commander maintenant</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>VitaCor</h3>
+                    <p>Votre pharmacie en ligne de confiance depuis 2015. Nous nous engageons à fournir des produits pharmaceutiques de qualité à des prix compétitifs.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">ig</a>
+                    </div>
+                </div>
+                
+                
+                
+                <div class="footer-column">
+                    <h3>Catégories</h3>
+                    <ul>
+                        <li><a href="#">Médicaments</a></li>
+                        <li><a href="#">Compléments alimentaires</a></li>
+                        <li><a href="#">Soins de la peau</a></li>
+                        <li><a href="#">Hygiène</a></li>
+                        <li><a href="#">Matériel médical</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li>123 Avenue de la Santé, 75001 Casa</li>
+                        <li>VitaCor@yahoo.fr</li>
+                        <li>01 23 45 67 89</li>
+                        <li>Lun-Ven: 9h-18h</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 VitaCor Pharmaceutique. Tous droits réservés.</p>
+                <p>Mentions légales | Politique de confidentialité | CGV</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

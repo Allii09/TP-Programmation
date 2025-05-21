@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+    <link rel="stylesheet" href="commande.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Connexion</h1>
+        <div class="form-container">
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email :</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-success">Se connecter</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const data = {
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value
+            };
+
+            fetch("login.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            })
+            .then(res => {
+                console.log("Response status:", res.status);
+                return res.text();  // lire la réponse brute en texte
+            })
+            .then(text => {
+                console.log("Raw response text:", text);
+                return JSON.parse(text);  // parser manuellement
+            })
+            .then(response => {
+                alert(response.message);
+                if (response.success) {
+                    localStorage.setItem("client_token", response.token);
+                    // Vérifier la propriété user_type (assure-toi que login.php l'envoie)
+                    if(response.user_type === 'admin'){
+                        window.location.href = "dashboardAdmin.php";
+                    } else {
+                        window.location.href = "dashboard.php";
+                    }
+                }
+            })
+            .catch(err => {
+                alert("Erreur de connexion au serveur : " + err.message);
+                console.error(err);
+            });
+        });
+    </script>
+</body>
+</html>
