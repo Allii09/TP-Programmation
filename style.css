@@ -1,0 +1,107 @@
+/* Style général */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+}
+
+/* Conteneur principal */
+.container {
+    display: flex;
+    height: 100%;
+}
+
+/* Menu latéral */
+.sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 20px 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-right: 2px solid #34495e;
+    transition: all 0.3s ease;
+}
+
+.sidebar:hover {
+    width: 270px; /* Effet d'agrandissement au survol */
+}
+
+nav .nav-list {
+    list-style: none;
+    padding: 0;
+}
+
+nav .nav-list .nav-item {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav .nav-list .nav-item:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+nav .nav-list .nav-item i {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+/* Contenu principal */
+.content {
+    margin-left: 270px; /* Ajuster à la nouvelle largeur du menu */
+    padding: 20px;
+    width: calc(100% - 270px);
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #34495e;
+    margin-bottom: 20px;
+}
+
+/* Tableau des commandes */
+.commandes-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.commandes-table th, .commandes-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.commandes-table th {
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.commandes-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.commandes-table tr:hover {
+    background-color: #f1f1f1;
+}

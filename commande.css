@@ -1,0 +1,205 @@
+ body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* On décale le contenu principal à droite de la sidebar */
+.main-content {
+    margin-left: 250px; /* même largeur que la sidebar */
+    display: flex;
+    justify-content: center;
+}
+
+/* Conteneur principal */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+
+
+/* Titres */
+h1, h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* Formulaires */
+.form-container {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+/* Boutons */
+.btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    margin-right: 8px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+}
+
+.btn-success {
+    background-color: #2ecc71;
+}
+
+/* Conteneurs des produits et commandes */
+.products-container,
+.orders-container {
+    overflow-x: auto;
+    margin-top: 30px;
+}
+
+/* Tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f2f2f2;
+}
+
+/* Boutons d'action */
+.action-btn {
+    padding: 5px 10px;
+    margin: 0 3px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Élément de produit dans commande */
+.product-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.product-select {
+    margin-right: 15px;
+    min-width: 150px;
+}
+
+.product-info {
+    flex-grow: 1;
+}
+
+.product-quantity {
+    width: 70px;
+}
+
+/* Statuts des commandes */
+.status-pending {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+.status-delivered {
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+.status-canceled {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    body {
+        margin-left: 200px;
+    }
+
+    .container {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .product-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-quantity {
+        width: 100%;
+        margin-top: 8px;
+    }
+}
